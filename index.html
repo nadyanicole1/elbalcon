@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El balcón - Webdoc</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background: url("img/texturapapel.jpg") repeat;
+      background-size: cover;
+      color: #333;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    h1 {
+      font-size: 6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-style: regular;
+      margin-bottom: 2rem;
+    }
+
+    .illustration {
+      max-width: 400px;
+      width: 80%;
+      border: 2px solid #888;
+      box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background-color: #d4c1a5;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn:hover {
+      background-color: #c7b393;
+    }
+
+    /* Estilos para el efecto de volteo de página */
+    .page-turn {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      display: none;
+      z-index: 1000;
+      perspective: 1000px;
+      overflow: hidden;
+    }
+
+    .page-turn.active {
+      display: block;
+    }
+
+    .page-turn-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+
+    .page-turn-front {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url("img/texturapapel.jpg") repeat;
+      background-size: cover;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .page-turn-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      transform: rotateY(180deg);
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .page-turn-front.active {
+      transform: rotateY(180deg) translateX(100%);
+    }
+
+    .page-turn-back.active {
+      transform: rotateY(0deg) translateX(-100%);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="flip-container" id="flip">
+    <div class="flipper">
+      <div class="front">
+        <div class="container">
+          <h1>El balcón</h1>
+          <h2>Felisberto Hernández</h2> 
+          <button class="btn" onclick="abrirDiario()">Abrir Diario</button>
+        </div>
+      </div>
+      <div class="back">
+        <div class="container">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function abrirDiario() {
+  const flipper = document.querySelector('.flipper');
+  flipper.classList.add('flip');
+
+  setTimeout(() => {
+    window.location.href = "pagina1.html";
+  }, 1000); // Espera a que termine el giro
+}
+  
+
+    var numberOfPages = 1000; 
+  
+    // Adds the pages that the book will need
+    function addPage(page, book) {
+      // 	First check if the page is already in the book
+      if (!book.turn('hasPage', page)) {
+        // Create an element for this page
+        var element = $('<div />', {'class': 'page '+((page%2==0) ? 'odd' : 'even'), 'id': 'page-'+page}).html('<i class="loader"></i>');
+        // If not then add the page
+        book.turn('addPage', element, page);
+        // Let's assum that the data is comming from the server and the request takes 1s.
+        setTimeout(function(){
+            element.html('<div class="data">Data for page '+page+'</div>');
+        }, 1000);
+      }
+    }
+  
+    $(window).ready(function(){
+      $('#book').turn({acceleration: true,
+                pages: numberOfPages,
+                elevation: 50,
+                gradients: !$.isTouch,
+                when: {
+                  turning: function(e, page, view) {
+  
+                    // Gets the range of pages that the book needs right now
+                    var range = $(this).turn('range', page);
+  
+                    // Check if each page is within the book
+                    for (page = range[0]; page<=range[1]; page++) 
+                      addPage(page, $(this));
+  
+                  },
+  
+                  turned: function(e, page) {
+                    $('#page-number').val(page);
+                  }
+                }
+              });
+  
+      $('#number-pages').html(numberOfPages);
+  
+      $('#page-number').keydown(function(e){
+  
+        if (e.keyCode==13)
+          $('#book').turn('page', $('#page-number').val());
+          
+      });
+    });
+  
+    $(window).bind('keydown', function(e){
+  
+      if (e.target && e.target.tagName.toLowerCase()!='input')
+        if (e.keyCode==37)
+          $('#book').turn('previous');
+        else if (e.keyCode==39)
+          $('#book').turn('next');
+  
+    });
+  
+  </script>
+  <script>
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = this.href;
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = 0;
+        setTimeout(() => window.location.href = target, 500);
+      });
+    });
+  
+    window.addEventListener('load', () => {
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = 1;
+      }, 50);
+    });
+  </script>
+  
+
+</body>
+</html>

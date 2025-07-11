@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El balcón - Página 4.5</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background: url('img/texturapapel.jpg') repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
+    }
+
+    .contenido {
+      width: 90%;
+      max-width: 1000px;
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    .texto-cuento {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: #333;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+    }
+
+    .imagenes-candelabros {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .candelabro {
+      width: 35%;
+      max-width: 300px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .candelabro:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-siguiente,
+    .btn-atras {
+      position: fixed;
+      bottom: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Special Elite', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    .btn-siguiente:hover,
+    .btn-atras:hover {
+      background: rgb(78, 3, 3);
+      color: #ffffff;
+    }
+
+    .btn-siguiente {
+      right: 1.5rem;
+    }
+
+    .btn-atras {
+      left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenido">
+    <div class="texto-cuento">
+      <p>-Ella encendía las cuatro velas de los candelabros y tocaba notas tan lentas y tan separadas en el silencio como si también fuera encendiendo, uno por uno, los sonidos...</p>
+    </div>
+    <div class="imagenes-candelabros">
+      <img src="img/candelabroapagado.png" alt="Candelabro apagado" class="candelabro" id="candelabro1" />
+      <img src="img/candelabroapagado.png" alt="Candelabro apagado" class="candelabro" id="candelabro2" />
+    </div>
+  </div>
+
+  <button class="btn-siguiente" onclick="window.location.href='pagina5.html'">→</button>
+  <button class="btn-atras" onclick="window.location.href='pagina4.html'">←</button>
+
+  <audio id="pianoAudio" preload="auto" controls style="display: none;">
+    <source src="audios/late-jazz-piano-pure-62449.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    const candelabros = document.querySelectorAll('.candelabro');
+    const pianoAudio = document.getElementById('pianoAudio');
+    let candelabrosEstado = 'apagado';
+
+    // Inicializar el audio
+    pianoAudio.load();
+
+    candelabros.forEach(candelabro => {
+      candelabro.addEventListener('click', function() {
+        if (candelabrosEstado === 'apagado') {
+          candelabrosEstado = 'prendido';
+          candelabros.forEach(c => {
+            c.src = 'gif/candelabroprendido.png';
+          });
+          if (pianoAudio.paused) {
+            pianoAudio.currentTime = 0;
+            pianoAudio.play();
+          }
+        } else {
+          candelabrosEstado = 'apagado';
+          candelabros.forEach(c => {
+            c.src = 'img/candelabroapagado.png';
+          });
+          pianoAudio.pause();
+          pianoAudio.currentTime = 0;
+        }
+      });
+    });
+
+    pianoAudio.addEventListener('canplaythrough', function() {
+      console.log('Audio listo para reproducirse');
+    });
+
+    pianoAudio.addEventListener('error', function() {
+      console.error('Error al cargar el audio');
+    });
+  </script>
+</body>
+</html>

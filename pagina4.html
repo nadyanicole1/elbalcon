@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El balcón - Página 4</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background: url('img/texturapapel.jpg') repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .contenido {
+      width: 80%;
+      max-width: 1200px;
+      text-align: center;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .texto-cuento {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .gif-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .gif-container img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .gif-container img:hover {
+      transform: scale(1.05);
+    }
+
+    .thought-bubble {
+      display: none;
+      position: absolute;
+      background: white;
+      border: 2px solid #666;
+      border-radius: 10px;
+      padding: 1rem;
+      font-size: 1rem;
+      line-height: 1.4;
+      max-width: 300px;
+      z-index: 10;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .thought-bubble::before {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 15px 15px 0;
+      border-style: solid;
+      border-color: #666 transparent transparent transparent;
+    }
+
+    .thought-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 13px 13px 0;
+      border-style: solid;
+      border-color: white transparent transparent transparent;
+    }
+
+    .gif-pianista:hover ~ .thought-bubble {
+      display: block;
+    }
+
+   .btn-siguiente,
+    .btn-atras {
+      position: fixed;
+      bottom: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Special Elite', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    .btn-siguiente:hover,
+    .btn-atras:hover {
+      background: rgb(78, 3, 3);
+      color: #ffffff;
+    }
+
+    .btn-siguiente {
+      right: 1.5rem;
+    }
+
+    .btn-atras {
+      left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenido">
+    <div class="texto-cuento">
+      Al final de uno de esos conciertos, vino a saludarme un anciano tímido. Debajo de sus ojos azules se veía la carne viva y enrojecida de sus párpados caídos; el labio inferior, muy grande y parecido a la baranda de un palco, daba vuelta alrededor de su boca entreabierta. De allí salía una voz apagada y palabras lentas; además, las iba separando con el aire quejoso de la respiración.
+    </div>
+
+    <div class="gif-container">
+      <img src="gif/PIANISTA.webp" alt="Pianista" class="gif-pianista" />
+      <div class="thought-bubble" style="top: -200px; left: 50%; transform: translateX(-50%);">
+        No sé por qué se me ocurrió que la hija se habría quedado ciega; y enseguida me di cuenta que una ciega podía oír, que más bien podría haberse quedado sorda, o no estar en la ciudad; y de pronto me detuve en la idea de que podría haberse muerto.
+      </div>
+      <img src="gif/anciano.webp" alt="Anciano" class="gif-anciano" />
+    </div>
+
+    <!-- Botones de navegación -->
+    <button class="btn-siguiente" onclick="window.location.href='pagina20.html'">→</button>
+    <button class="btn-atras" onclick="window.location.href='pagina3.html'">←</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El balcón - Página 5</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background: url('img/texturapapel.jpg') repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .contenido {
+      width: 80%;
+      max-width: 1200px;
+      text-align: center;
+      padding: 2rem;
+    }
+
+     .btn-siguiente,
+    .btn-atras {
+      position: fixed;
+      bottom: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Special Elite', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    .btn-siguiente:hover,
+    .btn-atras:hover {
+      background: rgb(78, 3, 3);
+      color: #ffffff;
+    }
+
+    .btn-siguiente {
+      right: 1.5rem;
+    }
+
+    .btn-atras {
+      left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenido">
+    <!-- Content will be added here -->
+  </div>
+<!-- Botones de navegación -->
+    <button class="btn-siguiente" onclick="window.location.href='pagina6.html'">→</button>
+    <button class="btn-atras" onclick="window.location.href='pagina20.html'">←</button>
+</body>
+</html>

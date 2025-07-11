@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title></title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background: url(img/texturapapel.jpg) repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .collage {
+      position: relative;
+      width: 80%;
+      max-width: 1200px;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      justify-items: center;
+      z-index: 2;
+    }
+
+    .polaroid {
+      position: relative;
+      width: 250px;
+      border: 2px solid #666;
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease, z-index 0s ease 0.3s;
+      z-index: 1; /* Base z-index */
+      cursor: pointer;
+    }
+
+    .polaroid:hover {
+      z-index: 10; /* Traer al frente al hacer hover */
+      transform: rotate(-2deg) scale(1.05);
+      transition-delay: 0s;
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: auto;
+      border: 2px solid #333;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .polaroid p {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #333;
+      margin: 0;
+    }
+
+    /* Descripción por defecto (arriba) */
+    .descripcion {
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #666;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 20; /* Sobre la polaroid */
+    }
+
+    .descripcion::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 10px 10px 0 10px;
+      border-style: solid;
+      border-color: #666 transparent transparent transparent;
+    }
+
+    /* Hover para mostrar descripción arriba */
+    .polaroid:hover .descripcion {
+      bottom: 100%;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Modificación para polaroid con clase "abajo" */
+    .polaroid.abajo .descripcion {
+      top: 120%;
+      bottom: auto;
+    }
+
+    .polaroid.abajo .descripcion::before {
+      bottom: auto;
+      top: -10px;
+      border-width: 0 10px 10px 10px;
+      border-color: transparent transparent #666 transparent;
+    }
+
+    /* Hover para mostrar descripción abajo */
+    .polaroid.abajo:hover .descripcion {
+      top: 100%;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nota-musical {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: caer 5s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes caer {
+      0% {
+        top: -100px;
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.7;
+      }
+      80% {
+        opacity: 0.7;
+      }
+      100% {
+        top: 100vh;
+        opacity: 0;
+      }
+    }
+
+    .btn-siguiente,
+    .btn-atras {
+      position: fixed;
+      bottom: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Special Elite', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    .btn-siguiente:hover,
+    .btn-atras:hover {
+      background: rgb(78, 3, 3);
+      color: #ffffff;
+    }
+
+    .btn-siguiente {
+      right: 1.5rem;
+    }
+
+    .btn-atras {
+      left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Notas musicales -->
+  <div class="nota-musical" style="left: 10%; animation-delay: 0s; background-image: url('img/nota musical 1.png')"></div>
+  <div class="nota-musical" style="left: 25%; animation-delay: 1s; background-image: url('img/nota musical 2.png')"></div>
+  <div class="nota-musical" style="left: 40%; animation-delay: 2s; background-image: url('img/nota musical 3.png')"></div>
+  <div class="nota-musical" style="left: 55%; animation-delay: 3s; background-image: url('img/nota musical 4.png')"></div>
+  <div class="nota-musical" style="left: 70%; animation-delay: 4s; background-image: url('img/nota musical 5.png')"></div>
+
+  <div class="collage">
+    <div class="polaroid abajo">
+      <img src="img/polaroidpianista.png" alt="Pianista" />
+      <p>Pianista</p>
+      <div class="descripcion">
+        <h3>Pianista</h3>
+        <p>El pianista es observador, sensible y algo tímido, hay momentos en los que se siente ajeno a las situaciones que pasan y otras que está totalmente involucrado.</p>
+      </div>
+    </div>
+    
+    <div class="polaroid abajo">
+      <img src="img/polaroidviuda.png" alt="Viuda" />
+      <p>Viuda</p>
+      <div class="descripcion">
+        <h3>Viuda</h3>
+        <p>La viuda tiene una boca alargada, con una gran sonrisa inocente y amarillenta, el pelo rubio y desteñido, un cuerpo delgado y patas de gallo.</p>
+      </div>
+    </div>
+
+    <div class="polaroid">
+      <img src="img/polaroidviejo.jpg" alt="Anciano" />
+      <p>Anciano</p>
+      <div class="descripcion">
+        <h3>Anciano</h3>
+        <p>El anciano es un viejo tímido, de ojos azules, con párpados caídos y un gran labio inferior. Él habla con voz apagada y respiración entrecortada. Es torpe, tierno y se emociona con facilidad.</p>
+      </div>
+    </div>
+
+    <div class="polaroid">
+      <img src="img/polaroidenana.png" alt="Enana" />
+      <p>Enana</p>
+      <div class="descripcion">
+        <h3>Enana</h3>
+        <p>La sirvienta es muy bajita, casi como un enano o un niño. Tiene la cara roja, manos fuertes y es bastante callada.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botones de navegación -->
+  <button class="btn-siguiente" onclick="window.location.href='pagina2.html'">→</button>
+  <button class="btn-atras" onclick="window.location.href='index.html'">←</button>
+
+  <script>
+    // Asegurarse de que las notas estén posicionadas correctamente
+    const notas = document.querySelectorAll('.nota-musical');
+    notas.forEach(nota => {
+      nota.style.position = 'absolute';
+      nota.style.width = '30px';
+      nota.style.height = '30px';
+      nota.style.opacity = '0.7';
+      nota.style.animation = 'caer 5s linear infinite';
+    });
+  </script>
+</body>
+</html>

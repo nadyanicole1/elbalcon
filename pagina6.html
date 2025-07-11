@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El balcón - Página 6</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background: url('img/texturapapel.jpg') repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .contenido {
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .imagen-principal {
+      width: 60%;
+      max-width: 600px;
+      margin: 2rem auto;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .imagen-pequena {
+      position: absolute;
+      width: 25%;
+      max-width: 250px;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .imagen-pequena:hover {
+      transform: scale(1.1);
+    }
+
+    .imagen-izquierda {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .imagen-derecha {
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+      .btn-siguiente,
+    .btn-atras {
+      position: fixed;
+      bottom: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Special Elite', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    .btn-siguiente:hover,
+    .btn-atras:hover {
+      background: rgb(78, 3, 3);
+      color: #ffffff;
+    }
+
+    .btn-siguiente {
+      right: 1.5rem;
+    }
+
+    .btn-atras {
+      left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenido">
+    <img src="img/risas.png" alt="Risas" class="imagen-pequena imagen-izquierda" id="imagenRisas" />
+    <img src="img/camison.png" alt="Camisón" class="imagen-principal" />
+    <img src="img/vino.png" alt="Vino" class="imagen-pequena imagen-derecha" id="imagenVino" />
+    
+   <!-- Botones de navegación -->
+    <button class="btn-siguiente" onclick="window.location.href='pagina7.html'">→</button>
+    <button class="btn-atras" onclick="window.location.href='pagina5.html'">←</button>
+  </div>
+
+  <audio id="risasHombres" preload="auto">
+    <source src="audios/risashombres.mp3" type="audio/mp3">
+  </audio>
+
+  <audio id="risaMujer" preload="auto">
+    <source src="audios/risamujer.mp3" type="audio/mp3">
+  </audio>
+
+  <audio id="vinoAudio" preload="auto">
+    <source src="audios/vinosirviendose.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    const imagenRisas = document.getElementById('imagenRisas');
+    const risasHombres = document.getElementById('risasHombres');
+    const risaMujer = document.getElementById('risaMujer');
+    let audioEstado = 'detenido';
+
+    const imagenVino = document.getElementById('imagenVino');
+    const vinoAudio = document.getElementById('vinoAudio');
+    let vinoEstado = 'detenido';
+
+    risasHombres.load();
+    risaMujer.load();
+    vinoAudio.load();
+
+    imagenRisas.addEventListener('click', function() {
+      if (audioEstado === 'detenido') {
+        audioEstado = 'reproduciendo';
+        risasHombres.currentTime = 0;
+        risaMujer.currentTime = 0;
+        risasHombres.play();
+        risaMujer.play();
+      } else {
+        audioEstado = 'detenido';
+        risasHombres.pause();
+        risaMujer.pause();
+        risasHombres.currentTime = 0;
+        risaMujer.currentTime = 0;
+      }
+    });
+
+    imagenVino.addEventListener('click', function() {
+      if (vinoEstado === 'detenido') {
+        vinoEstado = 'reproduciendo';
+        vinoAudio.currentTime = 0;
+        vinoAudio.play();
+      } else {
+        vinoEstado = 'detenido';
+        vinoAudio.pause();
+        vinoAudio.currentTime = 0;
+      }
+    });
+
+    risasHombres.addEventListener('canplaythrough', function() {
+      console.log('Audio risas hombres listo para reproducirse');
+    });
+
+    risaMujer.addEventListener('canplaythrough', function() {
+      console.log('Audio risa mujer listo para reproducirse');
+    });
+
+    risasHombres.addEventListener('error', function() {
+      console.error('Error al cargar el audio de risas hombres');
+    });
+
+    risaMujer.addEventListener('error', function() {
+      console.error('Error al cargar el audio de risa mujer');
+    });
+
+    vinoAudio.addEventListener('canplaythrough', function() {
+      console.log('Audio vino listo para reproducirse');
+    });
+
+    vinoAudio.addEventListener('error', function() {
+      console.error('Error al cargar el audio de vino');
+    });
+  </script>
+</body>
+</html>

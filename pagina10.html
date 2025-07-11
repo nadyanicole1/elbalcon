@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El balcón - Página 10</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background: url('img/texturapapel.jpg') repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .contenido {
+      width: 90%;
+      max-width: 1400px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .disposicion-horizontal {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .img-wrapper {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .img-viuda {
+      width: 200%;
+      max-width: 600px;
+      height: auto;
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .img-asentir {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .img-viuda:hover {
+      transform: scale(1.2);
+    }
+    .img-asentir:hover {
+      transform: scale(1.2);
+    }
+
+    .texto {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #333;
+      text-align: center;
+      max-width: 360px;
+      max-height: 75vh;
+      overflow-y: auto;
+      padding-right: 0.3rem;
+      scrollbar-width: thin;
+      scrollbar-color: transparent transparent;
+    }
+
+    .texto::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .texto::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+
+    .texto:hover::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-siguiente,
+    .btn-atras {
+      position: fixed;
+      bottom: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Special Elite', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .btn-siguiente:hover,
+    .btn-atras:hover {
+      background: rgb(78, 3, 3);
+      color: #ffffff;
+    }
+
+    .btn-siguiente {
+      right: 1.5rem;
+    }
+
+    .btn-atras {
+      left: 1.5rem;
+    }
+
+    /* Araña e hilo (inicialmente ocultos arriba) */
+    .arana,
+    .hilo {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: none;
+    }
+
+    .arana {
+      width: 50px;
+      height: auto;
+      top: -150px;
+    }
+
+    .hilo {
+      width: 2px;
+      height: 0;
+      background: #000;
+      top: 0;
+    }
+
+    /* Animación bajada */
+    .bajar {
+      display: block !important;
+      animation: bajarArana 3s ease-in-out;
+    }
+
+    .bajar-hilo {
+      display: block !important;
+      animation: hiloBaja 3s ease-in-out;
+    }
+
+    @keyframes bajarArana {
+      0% { top: -150px; opacity: 0; }
+      20% { opacity: 1; }
+      50% { top: 150px; }
+      80% { opacity: 1; }
+      100% { top: -150px; opacity: 0; }
+    }
+
+    @keyframes hiloBaja {
+      0% { height: 0; }
+      50% { height: 150px; }
+      100% { height: 0; }
+    }
+
+    /* Estilo para hacer clic */
+    #trigger-arana {
+      cursor: pointer;
+      color: rgb(78, 3, 3);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hilo y araña ocultos -->
+  <div class="hilo" id="hiloArana"></div>
+  <img src="img/arana.png" alt="Araña" class="arana" id="arana" />
+
+  <!-- Sonido -->
+  <audio id="audioArana" src="sonido/arana.mp3" preload="auto"></audio>
+
+  <div class="contenido">
+    <div class="disposicion-horizontal">
+      <div class="img-wrapper">
+        <img src="img/viuda.webp" alt="Viuda" class="img-viuda" />
+      </div>
+      <div class="texto">
+        —¿Vio cómo se nos fue? <br>
+        —¡Pero, señorita! Un balcón que se cae… <br>
+        —Él no se cayó. Él se tiró. <br>
+        —Bueno, pero...<br>
+        —No sólo yo lo quería a él; yo estoy segura de que él también me quería a mí; él me lo había demostrado.<br>
+        —Yo tuve la culpa de todo. Él se puso celoso la noche que yo fui a su habitación.<br>
+        —¿Quién?<br>
+        —¿Y quién va a ser? El balcón, mi balcón.<br>
+        —Pero señorita, usted piensa demasiado en eso. Él ya estaba viejo. Hay cosas que caen por su propio peso.<br>
+        —Esa misma noche comprendí el aviso y la amenaza.<br>
+        —Pero escuche, ¿cómo es posible que?...<br>
+        —¿No se acuerda quién me amenazó?... ¿Quién me miraba fijo tanto rato y levantando aquellas tres patas peludas?<br>
+        —<span id="trigger-arana">¡La araña!</span><br>
+        —Todo eso es muy suyo
+      </div>
+      <div class="img-wrapper">
+        <img src="img/asentir.gif" alt="Asentir" class="img-asentir" />
+      </div>
+    </div>
+
+    <button class="btn-siguiente" onclick="window.location.href='pagina11.html'">→</button>
+    <button class="btn-atras" onclick="window.location.href='pagina9.html'">←</button>
+  </div>
+
+  <!-- JS: activar animación y sonido al hacer clic -->
+  <script>
+    const arana = document.getElementById("arana");
+    const hilo = document.getElementById("hiloArana");
+    const audio = document.getElementById("audioArana");
+    const trigger = document.getElementById("trigger-arana");
+
+    trigger.addEventListener("click", () => {
+      // reiniciar animación
+      arana.classList.remove("bajar");
+      hilo.classList.remove("bajar-hilo");
+      void arana.offsetWidth; // forzar reflow
+      void hilo.offsetWidth;
+
+      arana.classList.add("bajar");
+      hilo.classList.add("bajar-hilo");
+
+      audio.currentTime = 0;
+      audio.play();
+    });
+  </script>
+
+</body>
+</html>

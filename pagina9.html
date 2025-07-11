@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El balcón - Página 9</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background: url('img/texturapapel.jpg') repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .contenido {
+      width: 100%;
+      max-width: 1400px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      z-index: 1;
+      position: relative;
+    }
+
+    .disposicion-horizontal {
+      display: grid;
+      grid-template-columns: auto auto 600px;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .img-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img-balcon {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      display: block;
+    }
+
+    .telefono-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img-telefono {
+      width: 40px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .img-telefono:hover {
+      transform: scale(1.2);
+    }
+
+    .texto {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #333;
+      text-align: left;
+      max-height: 75vh;
+      overflow-y: auto;
+      padding-right: 0.3rem;
+      scrollbar-width: thin;
+      scrollbar-color: transparent transparent;
+    }
+
+    .texto::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .texto::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+
+    .texto:hover::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilo para palabra clickeable "balcón" */
+    .texto #balcon-click {
+      color: darkred;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    /* Mantener color y subrayado mientras está hover */
+    .texto #balcon-click:hover {
+      color: darkred;
+      text-decoration: underline;
+    }
+
+    /* Oculto por defecto */
+    #balcon-img {
+      display: none;
+    }
+
+    .btn-siguiente,
+    .btn-atras {
+      position: fixed;
+      bottom: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Special Elite', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    .btn-siguiente:hover,
+    .btn-atras:hover {
+      background: rgb(78, 3, 3);
+      color: #ffffff;
+    }
+
+    .btn-siguiente {
+      right: 1.5rem;
+    }
+
+    .btn-atras {
+      left: 1.5rem;
+    }
+
+    /* Flash intenso para rayos */
+    #flash-rayo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transition: opacity 0.05s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Flash de tormenta -->
+  <div id="flash-rayo"></div>
+
+  <!-- Audio del teléfono -->
+  <audio id="ring" src="audio/telefono.mp3" preload="auto"></audio>
+
+  <div class="contenido">
+    <div class="disposicion-horizontal">
+      <!-- Contenedor de la imagen del balcón (oculto inicialmente) -->
+      <div class="img-wrapper" id="balcon-img">
+        <img src="img/balconroto.png" alt="Balcón roto" class="img-balcon" />
+      </div>
+
+      <!-- Teléfono al medio -->
+
+   <title>Teléfono Hover</title>
+  <style>
+    .img-telefono {
+      transition: 0.3s ease;
+      width: 200px; /* Ajustá según tu diseño */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="telefono-wrapper">
+    <img src="img/telefono.png" alt="Teléfono" class="img-telefono" 
+         onmouseover="this.src='img/telefono descolgado.png'" 
+         onmouseout="this.src='img/telefono.png'" />
+  </div>
+
+      <!-- Texto a la derecha -->
+      <div class="texto">
+        —Anteayer había tormenta, y a la tardecita nosotros estábamos en el comedor.<br>
+        —¿Así que le hizo mal esa luz?<br>
+        —¡Pero, mi amigo! ¿Usted no ha entendido?<br>
+        —¿Qué?<br>
+        —¡Hemos perdido  <span id="balcon-click"> EL BALCÓN </span>! ¡El balcón se cayó! ¡Aquella no era la luz del balcón!<br>
+        —Pero un balcón…
+      </div>
+    </div>
+
+    <!-- Botones de navegación -->
+    <button class="btn-siguiente" onclick="window.location.href='pagina10.html'">→</button>
+    <button class="btn-atras" onclick="window.location.href='pagina8.html'">←</button>
+  </div>
+
+  <script>
+    const telefono = document.querySelector('.img-telefono');
+    const ring = document.getElementById('ring');
+    const flash = document.getElementById('flash-rayo');
+    const balconClick = document.getElementById('balcon-click');
+    const balconImg = document.getElementById('balcon-img');
+
+    // Sonido teléfono requiere click inicial para permitir reproducción
+    let puedeSonar = false;
+    telefono.addEventListener('click', () => {
+      puedeSonar = true;
+      ring.currentTime = 0;
+      ring.play();
+    });
+
+    telefono.addEventListener('mouseenter', () => {
+      if (puedeSonar) {
+        ring.currentTime = 0;
+        ring.play();
+      }
+    });
+
+    telefono.addEventListener('mouseleave', () => {
+      ring.pause();
+      ring.currentTime = 0;
+    });
+
+    // Mostrar imagen del balcón al pasar mouse y ocultar al salir
+    balconClick.addEventListener('mouseenter', () => {
+      balconImg.style.display = 'flex';
+    });
+    balconClick.addEventListener('mouseleave', () => {
+      balconImg.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>

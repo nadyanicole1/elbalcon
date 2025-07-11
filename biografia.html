@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El balcón - Página bio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background: url('img/texturapapel.jpg') repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      padding: 2rem;
+    }
+
+    .contenido {
+      width: 90%;
+      max-width: 1400px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .img-wrapper {
+      text-align: center;
+    }
+
+    .img-feli {
+      max-width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+
+    .img-feli:hover {
+      transform: scale(1.05);
+    }
+
+    .texto {
+      font-size: 1.3rem;
+      color: #333;
+      line-height: 1.6;
+      max-width: 600px;
+      text-align: left;
+      background: rgba(255 255 255 / 0.8);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .btn-siguiente,
+    .btn-atras {
+      position: fixed;
+      bottom: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Special Elite', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .btn-siguiente:hover,
+    .btn-atras:hover {
+      background: rgb(78, 3, 3);
+      color: #fff;
+    }
+
+    .btn-siguiente {
+      right: 1.5rem;
+    }
+
+    .btn-atras {
+      left: 1.5rem;
+    }
+.nombre-feli {
+  font-weight: bold;
+  font-size: 2.2rem;
+  color: #222;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+    /* Responsive: en pantallas chicas apila en columna */
+    @media (max-width: 700px) {
+      .contenido {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .texto {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenido">
+    <div class="img-wrapper">
+      <img src="img/feli.png" alt="Imagen de Feli" class="img-feli" />
+    </div>
+
+  <div class="texto">
+  <span class="nombre-feli">Feliciano Felisberto Hernández Silva</span><br>
+  Nacido en Montevideo, Uruguay, el 20 de octubre de 1902, y fallecido en la misma ciudad el 13 de enero de 1964, Felisberto Hernández fue un reconocido pianista, compositor y escritor uruguayo. <br>
+  Considerado uno de los cuentistas más originales de Latinoamérica, sus relatos suelen presentar personajes comunes cuyas obsesiones irrumpen en la rutina diaria, creando atmósferas únicas y extrañas. <br>
+  Entre sus obras más destacadas se encuentran “La casa inundada”, “Nadie encendía las lámparas”, “La enana” y “El balcón”, reflejando su estilo particular que combina lo fantástico y lo onírico.<br>
+</div>
+
+  </div>
+
+  <button class="btn-siguiente" onclick="window.location.href='z-index'">→</button>
+  <button class="btn-atras" onclick="window.location.href='pagina11.html'">←</button>
+
+</body>
+</html>

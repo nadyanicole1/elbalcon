@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El balcón - Página 8</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Special Elite', cursive;
+      background: url('img/texturapapel.jpg') repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .contenido {
+      width: 80%;
+      max-width: 1200px;
+      text-align: center;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .texto {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .img-dupla {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 2rem;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    .img-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .img-dupla1,
+    .img-pianistaoye {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+
+    .img-pianistaoye:hover {
+      transform: scale(1.05);
+    }
+
+    .img-wrapper:hover .thought-bubble {
+      display: block;
+    }
+
+    .thought-bubble {
+      display: none;
+      position: absolute;
+      top: -160px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgb(255, 255, 255);
+      border: 2px solid #666;
+      border-radius: 10px;
+      padding: 1rem;
+      font-size: 1rem;
+      line-height: 1.4;
+      max-width: 300px;
+      z-index: 10;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .thought-bubble img.enanita {
+  width: 100px;
+  height: auto;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+    .thought-bubble::before {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 15px 15px 0;
+      border-style: solid;
+      border-color: #444 transparent transparent transparent;
+    }
+
+    .thought-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 13px 13px 0;
+      border-style: solid;
+      border-color: white transparent transparent transparent;
+    }
+   .btn-siguiente,
+.btn-atras {
+  position: fixed;
+  bottom: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background: #444; /* gris oscuro */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+}
+
+.btn-siguiente:hover,
+.btn-atras:hover {
+  background: rgb(78, 3, 3); /* amarillo claro estilo papel */
+  color: #ffffff;
+}
+
+.btn-siguiente {
+  right: 1.5rem;
+}
+
+.btn-atras {
+  left: 1.5rem;
+}
+
+    
+  </style>
+</head>
+<body>
+  <div class="contenido">
+    <div class="texto">
+      —Ahora Úrsula sufre más; no sólo quiere menos al marido, sino que quiere más al otro. <br>
+      —¿Y no puede divorciarse? <br>
+      —No; porque ella quiere a los hijos, y los hijos quieren al marido y no quieren al otro <br>
+      —Ella podría decir a los hijos que el marido tiene varias amantes. <br>
+      —¡Siempre el mismo, tú! ¡Cuándo comprenderás a Úrsula! ¡Ella es incapaz de hacer eso!
+    </div>
+
+    <div class="img-dupla">
+  <div class="img-wrapper">
+    <img src="img/pianistaoye.png" alt="Pianista que oye" class="img-pianistaoye" />
+    <div class="thought-bubble">
+        Tamarinda
+      <img src="img/enanita.webp" alt="Tamarinda" class="enanita" />
+    </div>
+  </div>
+
+  <div class="img-wrapper">
+    <img src="img/dupla.png" alt="Dupla" class="img-dupla1" />
+  </div>
+</div>
+      
+
+    <button class="btn-siguiente" onclick="window.location.href='pagina8.html'"> →</button>
+    <button class="btn-atras" onclick="window.location.href='pagina6.html'">← </button>
+  </div>
+</body>
+</html>
